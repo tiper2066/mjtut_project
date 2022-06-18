@@ -8,10 +8,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 secret_file = os.path.join(BASE_DIR, 'secrets.json') #secrets.json을 불러와 줍니다.
 
-with open(secret_file, 'r') as f: #open as로 secret.json을 열어줍니다.
-    secrets = json.loads(f.read())
+with open(secret_file, 'r') as f: #open as로 secrets.json을 열어줍니다.
+    secretfile = json.loads(f.read())
 
-def get_secret(setting, secrets=secrets): #예외 처리를 통해 오류 발생을 검출합니다.
+def get_secret(setting, secrets = secretfile): #예외 처리를 통해 오류 발생을 검출합니다.
     try:
         return secrets[setting]
     except KeyError:
